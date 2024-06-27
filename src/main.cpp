@@ -43,8 +43,6 @@ void setup() {
 
   // The jpeg image can be scaled by a factor of 1, 2, 4, or 8
   TJpgDec.setJpgScale(1);
-
-  // The decoder must be given the exact name of the rendering function above
   
 }
 
