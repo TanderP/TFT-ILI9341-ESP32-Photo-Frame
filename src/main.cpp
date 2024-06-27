@@ -50,11 +50,12 @@ void setup() {
 bool tft_output(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t* bitmap)
 {
    // Stop further decoding as image is running off bottom of screen
-  if ( y >= tft.height() ) return 0;
+  if ( y >= tft.height() ) 
+  {
+    return 0;
+  }
   // This function will clip the image block rendering automatically at the TFT boundaries
   tft.pushImage(x, y, w, h, bitmap);
-  // This might work instead if you adapt the sketch to use the Adafruit_GFX library
-  // tft.drawRGBBitmap(x, y, bitmap, w, h);
   // Return 1 to decode next block
   return 1;
 }
@@ -76,24 +77,19 @@ void loop() {
     {
       //Serial.println(file.name());
       image_name.push_back(file.name());
-      
     }
     file = root.openNextFile();  // Opens next file in root
   }
-
   Serial.println("Filenames stored in vector:");
   for (size_t i = 0; i < image_name.size(); i++) {
     Serial.println(image_name[i]);
   }
-
   root.close();
   init_SD = false;
-
   }else{  
       Serial.println("LOOP");
-      
   for (int i = 0; i < image_name.size(); i++) {
-     
+
   // Time recorded for test purposes
   uint32_t t = millis();
 
@@ -108,9 +104,8 @@ void loop() {
   // How much time did rendering take
   t = millis() - t;
   Serial.print(t); Serial.println(" ms");
-
+  
   // Wait before drawing again
-
     delay(5000);
   }
   
